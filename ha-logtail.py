@@ -19,7 +19,7 @@ def handle_log_line(line):
         tstamp = timex.group(1)
         if "Serving /auth/token" in line:
             rexsult = re.search(r" to ([\d\.]+)", line)
-            response = requests.post(apiURL, json={'chat_id': TELEGRAM_CHAT_ID, 'text': "HAlog ({}): successful login from {}".format(tstamp, rexsult.group(1)), 'silent': True})
+            response = requests.post(apiURL, json={'chat_id': TELEGRAM_CHAT_ID, 'text': "HAlog ({}): successful login from {}".format(tstamp, rexsult.group(1)), 'disable_notification': True})
         if "Serving /auth/login_flow/" in line:
             rexsult = re.search(r" to ([\d\.]+)", line)
             response = requests.post(apiURL, json={'chat_id': TELEGRAM_CHAT_ID, 'text': "HAlog ({}): login attempt from {}".format(tstamp, rexsult.group(1))})
