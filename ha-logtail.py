@@ -71,7 +71,7 @@ def handle_log_line(line):
 
 def log_and_send_message(ltype, send_telegram, tstamp, ip, ip2locdata=None):
     if (ip2locdata):
-        msg = "HA ({}): login {} from external IP: {}, {}, {}".format(tstamp, ltype, ip, ip2locdata.get('country'), ip2locdata.get('isp'))
+        msg = "HA ({}): login {} from external IP: {}, {}, {}".format(tstamp, ltype, ip, ip2locdata.get('country'), ip2locdata.get('as'))
     else:
         msg = "HA ({}): login {} from IP: {}".format(tstamp, ltype, ip)
 
