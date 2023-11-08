@@ -97,7 +97,7 @@ def lookup_external_ip(ip):
     try:
         api_result = requests.get('https://api.ip2location.io/', params=payload)
         data = api_result.json()
-        return {'country': data.get('country_name'), 'isp': data.get('isp'), }
+        return {'country': data.get('country_name'), 'as': data.get('as')}
     except Exception as e:
         print("Error during ip2loc: {}".format(str(e)))
         return None
