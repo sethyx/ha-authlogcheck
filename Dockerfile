@@ -1,7 +1,7 @@
-FROM python:3.11-slim-bookworm
+FROM --platform=linux/amd64 python:3.11-slim-bookworm
 
 RUN pip install requests
 
 COPY . .
 
-CMD python ha-logtail.py
+CMD python -u ha-logtail.py
