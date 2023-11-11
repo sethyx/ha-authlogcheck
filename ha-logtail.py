@@ -4,6 +4,7 @@ IP2LOC_API_TOKEN = os.environ.get("IP2LOC_API_TOKEN")
 TELEGRAM_API_TOKEN = os.environ.get("TELEGRAM_API_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 NETWORK_WHITELIST = os.environ.get("NETWORK_WHITELIST")
+SEND_SUCCESS_NOTIFICATIONS = os.environ.get("SEND_SUCCESS_NOTIFICATIONS", False)
 PUBLIC_IP_API = "https://api.ipify.org?format=json"
 
 if (IP2LOC_API_TOKEN is None):
@@ -40,7 +41,7 @@ def handle_log_line(line):
                     log_and_send_message("success", False, tstamp, ip)
                 else:
                     ip2locdata = lookup_external_ip(ip)
-                    log_and_send_message("success", True, tstamp, ip, ip2locdata)
+                    log_and_send_message("success", SEND_SUCCESS_NOTIFICATIONS, tstamp, ip, ip2locdata)
                         
         if "Serving /auth/login_flow/" in line:
             rexsult = re.search(r" to ([\w\.:]+)", line)
